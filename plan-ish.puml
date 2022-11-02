@@ -1,0 +1,39 @@
+@startuml
+interface Media
+class Series
+class Movie
+class FileIO
+class StartMenu
+class MainMenu
+class TextUI
+
+StartMenu -- MainMenu
+MainMenu-- Media
+
+Media <|-- Series
+Media <|-- Movie
+
+MainMenu -- TextUI
+MainMenu-- FileIO
+StartMenu *-- TextUI
+
+Media : - rating
+Media : - releaseYear
+Media : - category
+
+Series : - season
+Series : - episode
+Series : - rating
+Series : - category
+Series : - releaseYear
+
+Movie : - rating
+Movie : - category
+Movie : - releaseYear
+
+StartMenu : + login()
+StartMenu : + makeUser()
+
+MainMenu : + search()
+
+@enduml

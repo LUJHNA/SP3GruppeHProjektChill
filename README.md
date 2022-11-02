@@ -1,2 +1,2 @@
 # SP3GruppeHProjektChill
-Repo til SP3 Projekt "Chill"
+Repo til SP3 Projektet "Streaming tjeneste: Chill"

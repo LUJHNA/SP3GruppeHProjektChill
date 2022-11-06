@@ -1,11 +1,18 @@
+import com.sun.tools.javac.Main;
+
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.Writer;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class StartMenu {
     public static void main(String[] args) {
+
+        ArrayList<Movie> movies = new ArrayList<>();
+        Movie m1 = new Movie("Titanic", 10, 1997,"Drama");
+        movies.add(m1);
 
         Scanner login = new Scanner(System.in);
 
@@ -29,11 +36,27 @@ public class StartMenu {
                         String d = reader.nextLine();
                         String [] s = d.split(",");
                         if (s[0].equals(userName2) && s[1].equals(password2)) {
-                            System.out.println("Login succesfull.");
+                            System.out.println("Login succesful.");
+
+
+
+
+                            MainMenu mainMenu = new MainMenu();
+                            String x = mainMenu.seriesOrMovie();
+
+                            if (x.equals("movies")) {
+
+                                String y = mainMenu.searchByNameMovie(movies);
+                                System.out.println("Found " + y);
+
+                            }
+
+                            // if (x.equals(series)) ikke implementeret endnu.
+
 
                         } else {
 
-                            System.out.println("Login not succesfull, check username and password");
+                            System.out.println("Login not succesful, check username and password");
                         }
 
                     }
@@ -44,7 +67,9 @@ public class StartMenu {
                     System.out.println("Error");
 
 
+
                 }
+
 
 
         }

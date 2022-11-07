@@ -11,7 +11,7 @@ public class StartMenu {
     public static void main(String[] args) {
 
         ArrayList<Movie> movies = new ArrayList<>();
-        Movie m1 = new Movie("Titanic", 10, 1997,"Drama");
+        Movie m1 = new Movie("Titanic", 1997,"Drama",10);
         movies.add(m1);
 
         Scanner login = new Scanner(System.in);

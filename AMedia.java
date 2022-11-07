@@ -6,11 +6,11 @@ public abstract class AMedia {
 
     public String category;
 
-    public AMedia(String name, int rating, int releaseYear, String category) {
+    public AMedia(String name, int releaseYear, String category, int rating) {
         this.name = name;
-        this.rating = rating;
         this.releaseYear = releaseYear;
         this.category = category;
+        this.rating = rating;
     }
 
 

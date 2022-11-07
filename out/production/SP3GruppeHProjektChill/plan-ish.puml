@@ -17,19 +17,23 @@ MainMenu -- TextUI
 MainMenu-- FileIO
 StartMenu *-- TextUI
 
-Media : - rating
+Media : - name
 Media : - releaseYear
 Media : - category
+Media : - rating
 
-Series : - season
-Series : - episode
-Series : - rating
+
+Series : - name
 Series : - category
 Series : - releaseYear
+Series : - rating
+Series : - season
+Series : - episode
 
-Movie : - rating
+Movie : - name
 Movie : - category
 Movie : - releaseYear
+Movie : - rating
 
 StartMenu : + login()
 StartMenu : + makeUser()

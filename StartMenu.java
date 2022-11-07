@@ -12,7 +12,10 @@ public class StartMenu {
 
         ArrayList<Movie> movies = new ArrayList<>();
         Movie m1 = new Movie("Titanic", 1997,"Drama",10);
+        Movie m2 = new Movie("Kage", 1990, "Drama", 7);
         movies.add(m1);
+        movies.add(m2);
+
 
         Scanner login = new Scanner(System.in);
 
@@ -46,7 +49,7 @@ public class StartMenu {
 
                             if (x.equals("movies")) {
 
-                                String y = mainMenu.searchByNameMovie(movies);
+                                ArrayList y = mainMenu.searchByCategory(movies);
                                 System.out.println("Found " + y);
 
                             }

@@ -44,6 +44,28 @@ public class MainMenu {
       return null;
 
     }
+    public ArrayList searchByCategory(ArrayList<Movie> movies) {
+
+        Scanner s = new Scanner(System.in);
+        ArrayList<String> a = new ArrayList<>();
+        System.out.println("Enter your search by category");
+        String x = s.nextLine();
+        for (int i = 0; i < movies.size(); i++) {
+            if (movies.get(i).getCategory().equalsIgnoreCase(x)) {
+                a.add(movies.get(i).getName());
+
+
+
+
+
+            }
+          return a;
+
+
+        }
+
+        return null;
+    }
 
 
 }

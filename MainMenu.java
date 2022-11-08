@@ -5,12 +5,11 @@ public class MainMenu {
 
 
 
-    public String searchByNameMovie(ArrayList<Movie> movies) {
+    public String searchByName(ArrayList<AMedia> movies) {
 
         Scanner s = new Scanner(System.in);
         System.out.println("Enter your search");
         String x = s.nextLine();
-        System.out.println("search by name");
        for(int i = 0; i < movies.size(); i++) {
            if (movies.get(i).name.equalsIgnoreCase(x)) {
                return x;
@@ -44,7 +43,7 @@ public class MainMenu {
       return null;
 
     }
-    public ArrayList searchByCategory(ArrayList<Movie> movies) {
+    public ArrayList searchByCategory(ArrayList<AMedia> movies) {
 
         Scanner s = new Scanner(System.in);
         ArrayList<String> a = new ArrayList<>();
@@ -54,18 +53,50 @@ public class MainMenu {
             if (movies.get(i).getCategory().equalsIgnoreCase(x)) {
                 a.add(movies.get(i).getName());
 
-
-
-
-
             }
-          return a;
+        }
+        return a;
+    }
 
+    public String searchByNameOrCategory() {
+        Scanner s = new Scanner(System.in);
+        System.out.println("Choose to search by name or category by entering which one");
+        String c = s.nextLine();
+        if (c.equalsIgnoreCase("name")) {
+            System.out.println("You chose to search by name");
+            return "name";
+        }
+
+        if (c.equalsIgnoreCase("category")) {
+            System.out.println("You choose to search by category");
+            return "category";
 
         }
 
         return null;
+
+    }
+
+    public  String yesOrNo() {
+        Scanner s = new Scanner(System.in);
+        String c = s.nextLine();
+        if (c.equalsIgnoreCase("yes")) {
+            return "yes";
+        }
+
+        if (c.equalsIgnoreCase("no")) {
+            return "no";
+
+        }
+
+        return null;
+
+
+
+
+
     }
 
 
 }
+

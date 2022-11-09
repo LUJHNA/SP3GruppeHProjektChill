@@ -15,6 +15,8 @@ public class StartMenu {
 
         MainMenu menu = new MainMenu();
         menu.createMovies(movies);
+        menu.createSeries(series);
+
 
 
         loginAndRegister();

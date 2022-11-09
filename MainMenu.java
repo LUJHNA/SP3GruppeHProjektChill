@@ -140,25 +140,29 @@ public class MainMenu {
                 String[] values;
                 String[] values2;
                 String[] values3;
+                String[] values4;
                 values = s.nextLine().trim().split(";");
-                System.out.println(values.length);
-                values2 = values[1].split("-");
-                values3 = values[4].split(",");
+                values2 = values[1].trim().split("-");
+                //LAV ET IF STATEMENT MÅSKE.
+
+                values3 = values[4].trim().split(",");
+                values4 = values3[0].trim().split("-");
                 String n = values[0]; // name
                 int rf = Integer.parseInt(values2[0]); //releaseYear
-                int rt = Integer.parseInt(values2[1]); //releaseTo
-                String c = values[3]; // category
-                float t = Float.parseFloat(values[4]); // rating
+                int rt = Integer.parseInt(values2[0]); //releaseTo
+                String c = values[2]; // category
+                float t = Float.parseFloat(values[3]); // rating
                 int sns = 5; // seasons
-                int eps = Integer.parseInt(values3[0]); // epStart
-                int epe = Integer.parseInt(values3[1]); // epEnd
+                int eps = Integer.parseInt(values4[0]); // epStart
+                int epe = Integer.parseInt(values4[1]); // epEnd
+                System.out.println(values2[1]);
 
                 Series m = new Series (n, rf, rt, c, t, sns, eps, epe);
                 series.add(m);
             }
 
 
-        } catch (IOException e) {
+        } catch (Exception e) {
             System.out.println("Error");
 
 

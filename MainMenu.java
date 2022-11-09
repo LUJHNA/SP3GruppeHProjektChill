@@ -52,7 +52,7 @@ public class MainMenu {
         System.out.println("Enter your search by category");
         String x = s.nextLine();
         for (int i = 0; i < movies.size(); i++) {
-            if (movies.get(i).getCategory().equalsIgnoreCase(x)) {
+            if (movies.get(i).getCategory().contains(x) || movies.get(i).getCategory().toLowerCase().contains(x) || movies.get(i).getCategory().toUpperCase().contains(x)){
                 a.add(movies.get(i).getName());
 
             }
@@ -107,7 +107,7 @@ public class MainMenu {
 
             while (s.hasNextLine()) {
                 String[] values;
-                values = s.nextLine().split(";");
+                values = s.nextLine().trim().split(";");
                 String n = values[0];
                 int r = Integer.parseInt(values[1]);
                 String c = values[2];

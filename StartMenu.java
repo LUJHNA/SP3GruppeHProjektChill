@@ -80,6 +80,7 @@ public class StartMenu {
                 writer.write(",");
                 writer.write(password);
                 writer.close();
+                loginAndRegister();
 
 
             } catch (Exception e) {
@@ -121,7 +122,7 @@ public class StartMenu {
 
             if (x1.equals("category")) {
                 ArrayList<String> x4 = mainMenu.searchByCategory(media);
-                System.out.println("Found: " + x4);
+                System.out.println("Found: " + x4 + "\n");
                 System.out.println("Enter chosen movie");
                 Scanner sc = new Scanner(System.in);
                 String y = sc.nextLine();

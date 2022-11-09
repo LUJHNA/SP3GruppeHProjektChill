@@ -115,6 +115,7 @@ public class StartMenu {
 
                 if (x3.equals("no")) {
                     System.out.println("Search again");
+                    setupSearch(media);
                 }
 
             }
@@ -138,6 +139,7 @@ public class StartMenu {
 
                         if (x5.equals("no")) {
                             System.out.println("Search again");
+                            setupSearch(media);
 
                         }
 

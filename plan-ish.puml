@@ -13,14 +13,17 @@ MainMenu-- Media
 Media <|-- Series
 Media <|-- Movie
 
-MainMenu -- TextUI
+MainMenu -- User
 MainMenu-- FileIO
-StartMenu *-- TextUI
+StartMenu *-- User
 
 Media : - name
 Media : - releaseYear
 Media : - category
 Media : - rating
+
+User : + userName
+User : - password
 
 
 Series : - name

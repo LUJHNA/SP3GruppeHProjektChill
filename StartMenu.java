@@ -204,9 +204,11 @@ public class StartMenu {
                 for (int i = 0; i < x4.size(); i++) {
                     if (y.equalsIgnoreCase(x4.get(i))) {
                         System.out.println("Play " + x4.get(i) + "? yes or no, enter answer");
+                        
                         String x5 = mainMenu.yesOrNo();
 
                         if (x5.equals("yes")) {
+
                             System.out.println("Which season to play and episode to play? Write Season + episode");
 
                             Scanner scanner2 = new Scanner(System.in);

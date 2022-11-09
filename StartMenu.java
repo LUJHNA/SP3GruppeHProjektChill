@@ -10,12 +10,12 @@ import java.util.Scanner;
 public class StartMenu {
     public static void main(String[] args) {
 
-        ArrayList<AMedia> movies = new ArrayList<>();
-        ArrayList<AMedia> series = new ArrayList<>();
-
+        ArrayList<Movie> movies = new ArrayList<>();
+        ArrayList<Series> series = new ArrayList<>();
         MainMenu menu = new MainMenu();
         menu.createMovies(movies);
         menu.createSeries(series);
+
 
 
 
@@ -98,7 +98,7 @@ public class StartMenu {
 
     }
 
-    public static void setupSearch(ArrayList<AMedia> media, ArrayList<AMedia> media2) {
+    public static void setupSearch(ArrayList<Movie> media, ArrayList<Series> media2) {
         MainMenu mainMenu = new MainMenu();
         String x = mainMenu.seriesOrMovie();
 
@@ -108,7 +108,7 @@ public class StartMenu {
 
             if (x1.equals("name")) {
 
-                String x2 = mainMenu.searchByName(media);
+                String x2 = mainMenu.searchByNameMovies(media);
                 System.out.println("Found " + x2);
                 System.out.println("Play: " + x2 + "? yes or no, enter answer");
                 String x3 = mainMenu.yesOrNo();
@@ -125,10 +125,10 @@ public class StartMenu {
             }
 
             if (x1.equals("category")) {
-                ArrayList<String> x4 = mainMenu.searchByCategory(media);
+                ArrayList<String> x4 = mainMenu.searchByCategoryMovies(media);
                 if (x4.isEmpty()) {
                     System.out.println("Please type in a valid category such as Action, Drama, Romance");
-                    x4 = mainMenu.searchByCategory(media);
+                    x4 = mainMenu.searchByCategoryMovies(media);
 
                 }
 
@@ -172,14 +172,19 @@ public class StartMenu {
 
             if (x1.equals("name")) {
 
-                String x2 = mainMenu.searchByName(media);
+                String x2 = mainMenu.searchByNameSeries(media2);
                 System.out.println("Found " + x2);
                 System.out.println("Play: " + x2 + "? yes or no, enter answer");
                 String x3 = mainMenu.yesOrNo();
                 if (x3.equals("yes")) {
 
-                    //ASK WHICH SEASON AND EPISODE TO PLAY
-                    System.out.println("Playing " + x2);
+                    System.out.println("Which season to play and episode to play? Write Season + episode");
+
+                    Scanner scanner = new Scanner(System.in);
+                    String s1 = scanner.nextLine();
+
+                    System.out.println("PLaying " + x2 + "and " + s1);
+
 
                 }
 
@@ -191,7 +196,7 @@ public class StartMenu {
             }
 
             if (x1.equals("category")) {
-                ArrayList<String> x4 = mainMenu.searchByCategory(media);
+                ArrayList<String> x4 = mainMenu.searchByCategorySeries(media2);
                 System.out.println("Found: " + x4 + "\n");
                 System.out.println("Enter chosen series");
                 Scanner sc = new Scanner(System.in);
@@ -202,7 +207,12 @@ public class StartMenu {
                         String x5 = mainMenu.yesOrNo();
 
                         if (x5.equals("yes")) {
-                            System.out.println("Playing: " + x4.get(i));
+                            System.out.println("Which season to play and episode to play? Write Season + episode");
+
+                            Scanner scanner2 = new Scanner(System.in);
+                            String s2 = scanner2.nextLine();
+
+                            System.out.println("PLaying " + x4.get(i) + "and " + s2);
 
                         }
 

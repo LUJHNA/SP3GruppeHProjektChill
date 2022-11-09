@@ -7,7 +7,7 @@ public class MainMenu {
 
 
 
-    public String searchByName(ArrayList<AMedia> movies) {
+    public String searchByNameMovies(ArrayList<Movie> movies) {
 
         Scanner s = new Scanner(System.in);
         System.out.println("Enter your search");
@@ -24,6 +24,26 @@ public class MainMenu {
     }
 
     // SearchByNameSeries her. ikke implementeret endnu.
+
+    public String searchByNameSeries(ArrayList<Series> series) {
+
+        Scanner s = new Scanner(System.in);
+        System.out.println("Enter your search");
+        String x = s.nextLine();
+        for(int i = 0; i < series.size(); i++) {
+            if (series.get(i).getName().equalsIgnoreCase(x)) {
+                System.out.println("theres " + series.get(i).getSeason() + " seasons");
+                return x;
+
+
+            }
+
+        }
+
+        return null;
+    }
+
+
 
 
     public String seriesOrMovie() {
@@ -45,7 +65,7 @@ public class MainMenu {
       return null;
 
     }
-    public ArrayList searchByCategory(ArrayList<AMedia> movies) {
+    public ArrayList searchByCategoryMovies(ArrayList<Movie> movies) {
 
         Scanner s = new Scanner(System.in);
         ArrayList<String> a = new ArrayList<>();
@@ -63,6 +83,28 @@ public class MainMenu {
         return a;
 
     }
+
+    public ArrayList searchByCategorySeries(ArrayList<Series> movies) {
+
+        Scanner s = new Scanner(System.in);
+        ArrayList<String> a = new ArrayList<>();
+        System.out.println("Enter your search by category");
+        String x = s.nextLine();
+        for (int i = 0; i < movies.size(); i++) {
+            if (movies.get(i).getCategory().contains(x) || movies.get(i).getCategory().toLowerCase().contains(x) || movies.get(i).getCategory().toUpperCase().contains(x)){
+                a.add(movies.get(i).getName());
+
+            }
+        }
+
+
+
+        return a;
+
+    }
+
+
+
 
     public String searchByNameOrCategory() {
         Scanner s = new Scanner(System.in);
@@ -103,7 +145,7 @@ public class MainMenu {
 
     }
 
-    public static void createMovies(ArrayList<AMedia> movies) {
+    public static void createMovies(ArrayList<Movie> movies) {
         try {
             File f = new File("listOfMovies");
             Scanner s = new Scanner(f);
@@ -130,7 +172,7 @@ public class MainMenu {
         }
 
     }
-    public static void createSeries(ArrayList<AMedia> series) {
+    public static void createSeries(ArrayList<Series> series) {
         try {
             File f = new File("listOfSeries");
             Scanner s = new Scanner(f);
@@ -143,26 +185,31 @@ public class MainMenu {
                 String[] values4;
                 values = s.nextLine().trim().split(";");
                 values2 = values[1].trim().split("-");
-                //LAV ET IF STATEMENT MÅSKE.
+
+
 
                 values3 = values[4].trim().split(",");
                 values4 = values3[0].trim().split("-");
                 String n = values[0]; // name
                 int rf = Integer.parseInt(values2[0]); //releaseYear
                 int rt = Integer.parseInt(values2[0]); //releaseTo
+                if (values2.length > 1  ) {
+                    rt = Integer.parseInt(values2[1]);
+                }
+
                 String c = values[2]; // category
                 float t = Float.parseFloat(values[3]); // rating
                 int sns = 5; // seasons
                 int eps = Integer.parseInt(values4[0]); // epStart
                 int epe = Integer.parseInt(values4[1]); // epEnd
-                System.out.println(values2[1]);
+
 
                 Series m = new Series (n, rf, rt, c, t, sns, eps, epe);
                 series.add(m);
             }
 
 
-        } catch (Exception e) {
+        } catch (IOException e) {
             System.out.println("Error");
 
 

@@ -9,14 +9,15 @@ import java.util.Scanner;
 
 public class StartMenu {
     public static void main(String[] args) {
-
+        ArrayList<AMedia> series = new ArrayList<>();
         ArrayList<AMedia> movies = new ArrayList<>();
-
+        ArrayList<AMedia> seenMovies = new ArrayList<>();
+        ArrayList<AMedia> savedMovies = new ArrayList<>();
         MainMenu menu = new MainMenu();
         MainMenu.createMovies(movies);
 
         loginAndRegister();
-        setupSearch(movies);
+        setupSearch(movies, series);
 
 
 
@@ -46,6 +47,7 @@ public class StartMenu {
                     String[] s = d.split(",");
                     if (s[0].equals(userName2) && s[1].equals(password2)) {
                         System.out.println("Login succesful.");
+
 
                     } else {
 
@@ -94,7 +96,7 @@ public class StartMenu {
 
     }
 
-    public static void setupSearch(ArrayList<AMedia> media) {
+    public static void setupSearch(ArrayList<AMedia> media, ArrayList<AMedia> media2) {
         MainMenu mainMenu = new MainMenu();
         String x = mainMenu.seriesOrMovie();
 
@@ -115,13 +117,21 @@ public class StartMenu {
 
                 if (x3.equals("no")) {
                     System.out.println("Search again");
-                    setupSearch(media);
+                    setupSearch(media,media2);
                 }
 
             }
 
             if (x1.equals("category")) {
+
                 ArrayList<String> x4 = mainMenu.searchByCategory(media);
+
+                if (x4.isEmpty()) {
+                    System.out.println("Search again, try Drama, action etc.");
+                     x4 = mainMenu.searchByCategory(media);
+
+                }
+
                 System.out.println("Found: " + x4 + "\n");
                 System.out.println("Enter chosen movie");
                 Scanner sc = new Scanner(System.in);
@@ -139,7 +149,7 @@ public class StartMenu {
 
                         if (x5.equals("no")) {
                             System.out.println("Search again");
-                            setupSearch(media);
+                            setupSearch(media, media2);
 
                         }
 

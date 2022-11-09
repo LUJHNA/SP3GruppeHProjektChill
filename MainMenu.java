@@ -54,7 +54,7 @@ public class MainMenu {
         for (int i = 0; i < movies.size(); i++) {
             if (movies.get(i).getCategory().contains(x) || movies.get(i).getCategory().toLowerCase().contains(x) || movies.get(i).getCategory().toUpperCase().contains(x)){
                 a.add(movies.get(i).getName());
-            
+
             }
         }
 

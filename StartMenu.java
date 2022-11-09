@@ -11,12 +11,13 @@ public class StartMenu {
     public static void main(String[] args) {
 
         ArrayList<AMedia> movies = new ArrayList<>();
+        ArrayList<AMedia> series = new ArrayList<>();
 
         MainMenu menu = new MainMenu();
         MainMenu.createMovies(movies);
 
         loginAndRegister();
-        setupSearch(movies);
+        setupSearch(movies, series);
 
 
     }
@@ -93,7 +94,7 @@ public class StartMenu {
 
     }
 
-    public static void setupSearch(ArrayList<AMedia> media) {
+    public static void setupSearch(ArrayList<AMedia> media, ArrayList<AMedia> media2) {
         MainMenu mainMenu = new MainMenu();
         String x = mainMenu.seriesOrMovie();
 
@@ -114,7 +115,7 @@ public class StartMenu {
 
                 if (x3.equals("no")) {
                     System.out.println("Search again");
-                    setupSearch(media);
+                    setupSearch(media, media2);
                 }
 
             }
@@ -138,7 +139,7 @@ public class StartMenu {
 
                         if (x5.equals("no")) {
                             System.out.println("Search again");
-                            setupSearch(media);
+                            setupSearch(media, media2);
 
                         }
 
@@ -173,7 +174,7 @@ public class StartMenu {
 
                 if (x3.equals("no")) {
                     System.out.println("Search again");
-                    setupSearch(media);
+                    setupSearch(media, media2);
                 }
 
             }
@@ -197,7 +198,7 @@ public class StartMenu {
 
                         if (x5.equals("no")) {
                             System.out.println("Search again");
-                            setupSearch(media);
+                            setupSearch(media, media2);
 
                         }
 

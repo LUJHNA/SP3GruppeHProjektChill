@@ -1,12 +1,12 @@
 public abstract class AMedia {
     public String name;
-    public int rating;
+    public float rating;
 
     public int releaseYear;
 
     public String category;
 
-    public AMedia(String name, int releaseYear, String category, int rating) {
+    public AMedia(String name, int releaseYear, String category, float rating) {
         this.name = name;
         this.releaseYear = releaseYear;
         this.category = category;
@@ -21,11 +21,11 @@ public abstract class AMedia {
         this.name = name;
     }
 
-    public int getRating() {
+    public float getRating() {
         return rating;
     }
 
-    public void setRating(int rating) {
+    public void setRating(float rating) {
         this.rating = rating;
     }
 

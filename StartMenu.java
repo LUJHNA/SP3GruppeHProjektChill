@@ -11,10 +11,9 @@ public class StartMenu {
     public static void main(String[] args) {
 
         ArrayList<AMedia> movies = new ArrayList<>();
-        AMedia m1 = new Movie("Titanic", 1997, "Drama", 10);
-        AMedia m2 = new Movie("Kage", 1990, "Drama", 7);
-        movies.add(m1);
-        movies.add(m2);
+
+        MainMenu menu = new MainMenu();
+        MainMenu.createMovies(movies);
 
         loginAndRegister();
         setupSearch(movies);

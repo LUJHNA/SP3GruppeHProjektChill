@@ -14,7 +14,8 @@ public class StartMenu {
         ArrayList<AMedia> series = new ArrayList<>();
 
         MainMenu menu = new MainMenu();
-        MainMenu.createMovies(movies);
+        menu.createMovies(movies);
+
 
         loginAndRegister();
         setupSearch(movies, series);
@@ -50,6 +51,7 @@ public class StartMenu {
                     } else {
 
                         System.out.println("Login not succesful, check username and password");
+                        loginAndRegister();
                     }
 
                 }
@@ -122,6 +124,13 @@ public class StartMenu {
 
             if (x1.equals("category")) {
                 ArrayList<String> x4 = mainMenu.searchByCategory(media);
+                if (x4.isEmpty()) {
+                    System.out.println("Please type in a valid category such as Action, Drama, Romance");
+                    x4 = mainMenu.searchByCategory(media);
+
+                }
+
+
                 System.out.println("Found: " + x4 + "\n");
                 System.out.println("Enter chosen movie");
                 Scanner sc = new Scanner(System.in);

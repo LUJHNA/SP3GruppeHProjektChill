@@ -141,8 +141,9 @@ public class MainMenu {
                 String[] values2;
                 String[] values3;
                 values = s.nextLine().trim().split(";");
+                System.out.println(values.length);
                 values2 = values[1].split("-");
-                values3 = values[5].split(",");
+                values3 = values[4].split(",");
                 String n = values[0]; // name
                 int rf = Integer.parseInt(values2[0]); //releaseYear
                 int rt = Integer.parseInt(values2[1]); //releaseTo

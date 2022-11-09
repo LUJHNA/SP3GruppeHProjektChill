@@ -130,5 +130,39 @@ public class MainMenu {
         }
 
     }
+    public static void createSeries(ArrayList<AMedia> series) {
+        try {
+            File f = new File("listOfSeries");
+            Scanner s = new Scanner(f);
+
+
+            while (s.hasNextLine()) {
+                String[] values;
+                String[] values2;
+                String[] values3;
+                values = s.nextLine().trim().split(";");
+                values2 = values[1].split("-");
+                values3 = values[5].split(",");
+                String n = values[0]; // name
+                int rf = Integer.parseInt(values2[0]); //releaseYear
+                int rt = Integer.parseInt(values2[1]); //releaseTo
+                String c = values[3]; // category
+                float t = Float.parseFloat(values[4]); // rating
+                int sns = 5; // seasons
+                int eps = Integer.parseInt(values3[0]); // epStart
+                int epe = Integer.parseInt(values3[1]); // epEnd
+
+                Series m = new Series (n, rf, rt, c, t, sns, eps, epe);
+                series.add(m);
+            }
+
+
+        } catch (IOException e) {
+            System.out.println("Error");
+
+
+        }
+
+    }
 }
 

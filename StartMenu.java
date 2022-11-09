@@ -19,7 +19,6 @@ public class StartMenu {
         setupSearch(movies);
 
 
-
     }
 
     public static void loginAndRegister() {
@@ -144,31 +143,73 @@ public class StartMenu {
                         }
 
 
-
                     }
 
 
-
                 }
-
 
 
             }
 
         }
 
-
+//TODO Fix this to fit series instead of movies.
 
         if (x.equals("series")) {
+            String x1 = mainMenu.searchByNameOrCategory();
+
+            if (x1.equals("name")) {
+
+                String x2 = mainMenu.searchByName(media);
+                System.out.println("Found " + x2);
+                System.out.println("Play: " + x2 + "? yes or no, enter answer");
+                String x3 = mainMenu.yesOrNo();
+                if (x3.equals("yes")) {
+
+                    //ASK WHICH SEASON AND EPISODE TO PLAY
+                    System.out.println("Playing " + x2);
+
+                }
+
+                if (x3.equals("no")) {
+                    System.out.println("Search again");
+                    setupSearch(media);
+                }
+
+            }
+
+            if (x1.equals("category")) {
+                ArrayList<String> x4 = mainMenu.searchByCategory(media);
+                System.out.println("Found: " + x4 + "\n");
+                System.out.println("Enter chosen series");
+                Scanner sc = new Scanner(System.in);
+                String y = sc.nextLine();
+                for (int i = 0; i < x4.size(); i++) {
+                    if (y.equalsIgnoreCase(x4.get(i))) {
+                        System.out.println("Play " + x4.get(i) + "? yes or no, enter answer");
+                        String x5 = mainMenu.yesOrNo();
+
+                        if (x5.equals("yes")) {
+                            System.out.println("Playing: " + x4.get(i));
+
+                        }
 
 
+                        if (x5.equals("no")) {
+                            System.out.println("Search again");
+                            setupSearch(media);
 
+                        }
+
+
+                    }
+
+
+                }
+
+
+            }
 
         }
-
-
     }
-
-
 }
-

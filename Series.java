@@ -1,17 +1,14 @@
-public class Series extends AMedia{
+import java.util.ArrayList;
+
+public class Series extends AMedia {
 
     public int yearTo;
-    public int episodeStart;
-    public int episodeEnd;
-    public int season;
+    public ArrayList<Season> seasons;
 
-    public Series(String name,  int releaseYear, int yearTo, String category,float rating, int season, int episodeStart, int episodeEnd) {
+    public Series(String name, int releaseYear, int yearTo, String category, float rating, ArrayList<Season> seasons) {
         super(name, releaseYear, category, rating);
         this.yearTo = yearTo;
-        this.season = season;
-        this.episodeStart = episodeStart;
-        this.episodeEnd = episodeEnd;
-
+        this.seasons = seasons;
     }
 
     public int getYearTo() {
@@ -22,27 +19,8 @@ public class Series extends AMedia{
         this.yearTo = yearTo;
     }
 
-    public int getEpisodeStart() {
-        return episodeStart;
+    public int getNumberOfSeasons() {
+        return this.seasons.size();
     }
 
-    public void setEpisodeStart(int episodeStart) {
-        this.episodeStart = episodeStart;
-    }
-
-    public int getEpisodeEnd() {
-        return episodeEnd;
-    }
-
-    public void setEpisodeEnd(int episodeEnd) {
-        this.episodeEnd = episodeEnd;
-    }
-
-    public int getSeason() {
-        return season;
-    }
-
-    public void setSeasonStart(int season) {
-        this.season = season;
-    }
 }

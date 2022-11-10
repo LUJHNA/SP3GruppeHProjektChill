@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class StartMenu {
+
     public static void main(String[] args) {
 
         ArrayList<Movie> movies = new ArrayList<>();
@@ -48,11 +49,9 @@ public class StartMenu {
                     String d = reader.nextLine();
                     String[] s = d.split(",");
                     if (s[0].equals(userName2) && s[1].equals(password2)) {
-                        System.out.println("Login succesful.");
-
+                        System.out.println("Login successful.");
                     } else {
-
-                        System.out.println("Login not succesful, check username and password");
+                        System.out.println("Login not successful, check username and password");
                         loginAndRegister();
                     }
 
@@ -78,7 +77,6 @@ public class StartMenu {
             String password = login.nextLine();
 
             try {
-
                 Writer writer = new FileWriter("UserNames.txt");
                 writer.write(userName);
                 writer.write(",");

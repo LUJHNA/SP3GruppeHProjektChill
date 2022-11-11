@@ -3,6 +3,7 @@
 import java.io.File;
 import java.io.FileWriter;
 import java.io.Writer;
+import java.sql.SQLOutput;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -16,7 +17,6 @@ public class StartMenu {
 
         menu.createMovies(movies);
         menu.createSeries(series);
-
 
 
         loginAndRegister();
@@ -33,9 +33,7 @@ public class StartMenu {
         String m = login.nextLine();
 
 
-
         if ("Q".equalsIgnoreCase(m)) {
-
 
 
             System.out.println("Enter User name");
@@ -69,9 +67,7 @@ public class StartMenu {
             }
 
 
-        }
-
-        else if ("W".equalsIgnoreCase(m)) {
+        } else if ("W".equalsIgnoreCase(m)) {
 
             System.out.println("Enter new User Name");
             String userName = login.nextLine();
@@ -100,15 +96,12 @@ public class StartMenu {
         }
 
 
-
-
     }
 
     public static void setupSearch(ArrayList<Movie> media, ArrayList<Series> media2, ArrayList<User> users) {
         MainMenu mainMenu = new MainMenu();
         String x = mainMenu.seriesOrMovie();
         mainMenu.makeUser(users);
-
 
 
         if (x.equals("movies")) {
@@ -119,20 +112,27 @@ public class StartMenu {
 
                 String x2 = mainMenu.searchByNameMovies(media);
                 System.out.println("Found " + x2);
-                System.out.println("Play: " + x2 + "? yes or no, enter answer");
+                System.out.println("Play: " + x2 + "? yes or no or save, enter answer");
                 String x3 = mainMenu.yesOrNo();
                 if (x3.equals("yes")) {
                     System.out.println("Playing " + x2);
                     users.get(0).seenMovies.add(x2);
                     System.out.println("Added movie to seen movies");
-
+                    setupSearch(media, media2, users);
 
 
                 }
 
-                if (x3.equals("no")) {
+                else if (x3.equals("no")) {
                     System.out.println("Search again");
                     setupSearch(media, media2, users);
+                }
+
+                else if (x3.equalsIgnoreCase("Save")) {
+                    System.out.println("Saved movie");
+                    users.get(0).savedMovies.add(x2);
+                    setupSearch(media,media2,users);
+
                 }
 
             }
@@ -159,12 +159,20 @@ public class StartMenu {
                             System.out.println("Playing: " + x4.get(i));
                             users.get(0).seenMovies.add(x4.get(i));
                             System.out.println("Added " + x4.get(i) + "to seen movies");
+                            setupSearch(media, media2, users);
                         }
 
 
                         if (x5.equals("no")) {
                             System.out.println("Search again");
                             setupSearch(media, media2, users);
+
+                        }
+
+                        if (x5.equalsIgnoreCase("Save")) {
+                            System.out.println("Saved movie");
+                            users.get(0).savedMovies.add(x4.get(i));
+                            setupSearch(media,media2,users);
 
                         }
 
@@ -200,6 +208,7 @@ public class StartMenu {
                     System.out.println("PLaying " + x2 + "and " + s1);
                     users.get(0).seenSeries.add(x2);
                     System.out.println("Added " + x2 + "to seen series");
+                    setupSearch(media, media2, users);
                 }
 
                 if (x3.equals("no")) {
@@ -207,9 +216,16 @@ public class StartMenu {
                     setupSearch(media, media2, users);
                 }
 
+                if (x3.equalsIgnoreCase("Save")) {
+                    System.out.println("Saved series");
+                    users.get(0).savedSeries.add(x2);
+                    setupSearch(media,media2,users);
+
+                }
+
             }
 
-            if (x1.equals("category")) {
+           else if (x1.equals("category")) {
                 ArrayList<String> x4 = mainMenu.searchByCategorySeries(media2);
                 System.out.println("Found: " + x4 + "\n");
                 System.out.println("Enter chosen series");
@@ -217,7 +233,7 @@ public class StartMenu {
                 String y = sc.nextLine();
                 for (int i = 0; i < x4.size(); i++) {
                     if (y.equalsIgnoreCase(x4.get(i))) {
-                        System.out.println("Play " + x4.get(i) + "? yes or no, enter answer");
+                        System.out.println("Play " + x4.get(i) + "? yes or no, or enter 'save' to save it, enter answer");
 
                         String x5 = mainMenu.yesOrNo();
 
@@ -230,12 +246,21 @@ public class StartMenu {
 
                             System.out.println("PLaying " + x4.get(i) + "and " + s2);
                             System.out.println("Added " + x4.get(i) + "to seen series");
+                            users.get(0).seenSeries.add(x4.get(i));
+                            setupSearch(media, media2, users);
                         }
 
 
                         if (x5.equals("no")) {
                             System.out.println("Search again");
                             setupSearch(media, media2, users);
+
+                        }
+
+                        if (x5.equalsIgnoreCase("Save")) {
+                            System.out.println("Saved series");
+                            users.get(0).savedSeries.add(x4.get(i));
+                            setupSearch(media,media2,users);
 
                         }
 
@@ -249,5 +274,25 @@ public class StartMenu {
             }
 
         }
+        else if (x.equalsIgnoreCase("seen movies")) {
+            System.out.println(users.get(0).seenMovies);
+
+        }
+
+        else if (x.equalsIgnoreCase("saved movies")) {
+            System.out.println(users.get(0).savedMovies);
+
+        }
+
+        else if (x.equalsIgnoreCase("seen series")) {
+            System.out.println(users.get(0).seenSeries);
+
+        }
+
+        else if (x.equalsIgnoreCase("saved series")) {
+            System.out.println(users.get(0).savedSeries);
+
+        }
+
     }
 }

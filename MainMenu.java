@@ -47,20 +47,43 @@ public class MainMenu {
     public String seriesOrMovie() {
 
         Scanner s = new Scanner(System.in);
-        System.out.println("Choose to watch series or movies by entering which one");
+        System.out.println("Choose to watch series or movies  or see seen or saved movies/series by entering which one");
         String c = s.nextLine();
         if (c.equalsIgnoreCase("series")) {
             System.out.println("You chose series");
             return "series";
         }
 
-        if (c.equalsIgnoreCase("movies")) {
+        else if (c.equalsIgnoreCase("movies")) {
             System.out.println("You chose movies");
             return "movies";
 
         }
 
-        return null;
+        else if (c.equalsIgnoreCase("Seen movies")) {
+            System.out.println("you choose seen movies");
+            return "seen movies";
+        }
+
+        else if (c.equalsIgnoreCase("Seen series")) {
+            System.out.println("you choose seen series");
+            return "seen movies";
+        }
+
+         else if (c.equalsIgnoreCase("Saved movies")) {
+            System.out.println("you choose saved movies");
+            return "saved movies";
+        }
+       else if (c.equalsIgnoreCase("Saved series")) {
+            System.out.println("you choose Saved series");
+            return "saved series";
+        }
+
+        else {
+            System.out.println("try again");
+            seriesOrMovie();
+            return "blabla";
+        }
 
     }
 
@@ -68,7 +91,7 @@ public class MainMenu {
 
         Scanner s = new Scanner(System.in);
         ArrayList<String> a = new ArrayList<>();
-        System.out.println("Enter your search by category");
+        System.out.println("Enter your search by category, such as Drama, Action, Romance");
         String x = s.nextLine();
         for (int i = 0; i < movies.size(); i++) {
             if (movies.get(i).getCategory().contains(x) || movies.get(i).getCategory().toLowerCase().contains(x) || movies.get(i).getCategory().toUpperCase().contains(x)) {
@@ -86,7 +109,7 @@ public class MainMenu {
 
         Scanner s = new Scanner(System.in);
         ArrayList<String> a = new ArrayList<>();
-        System.out.println("Enter your search by category");
+        System.out.println("Enter your search by category, such as Action, Drama, Romance");
         String x = s.nextLine();
         for (int i = 0; i < series.size(); i++) {
             if (series.get(i).getCategory().contains(x) || series.get(i).getCategory().toLowerCase().contains(x) || series.get(i).getCategory().toUpperCase().contains(x)) {
@@ -132,6 +155,11 @@ public class MainMenu {
             return "no";
 
         }
+        if (c.equalsIgnoreCase("save")) {
+            return "save";
+
+        }
+
 
         return null;
 

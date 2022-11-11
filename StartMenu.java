@@ -32,7 +32,11 @@ public class StartMenu {
 
         String m = login.nextLine();
 
+
+
         if ("Q".equalsIgnoreCase(m)) {
+
+
 
             System.out.println("Enter User name");
             String userName2 = login.nextLine();
@@ -67,8 +71,7 @@ public class StartMenu {
 
         }
 
-
-        if ("W".equalsIgnoreCase(m)) {
+        else if ("W".equalsIgnoreCase(m)) {
 
             System.out.println("Enter new User Name");
             String userName = login.nextLine();
@@ -90,7 +93,13 @@ public class StartMenu {
             }
 
 
+        } else {
+            System.out.println("not valid input");
+            loginAndRegister();
+
         }
+
+
 
 
     }
@@ -148,7 +157,8 @@ public class StartMenu {
 
                         if (x5.equals("yes")) {
                             System.out.println("Playing: " + x4.get(i));
-
+                            users.get(0).seenMovies.add(x4.get(i));
+                            System.out.println("Added " + x4.get(i) + "to seen movies");
                         }
 
 
@@ -188,8 +198,8 @@ public class StartMenu {
                     String s1 = scanner.nextLine();
 
                     System.out.println("PLaying " + x2 + "and " + s1);
-
-
+                    users.get(0).seenSeries.add(x2);
+                    System.out.println("Added " + x2 + "to seen series");
                 }
 
                 if (x3.equals("no")) {
@@ -219,7 +229,7 @@ public class StartMenu {
                             String s2 = scanner2.nextLine();
 
                             System.out.println("PLaying " + x4.get(i) + "and " + s2);
-
+                            System.out.println("Added " + x4.get(i) + "to seen series");
                         }
 
 

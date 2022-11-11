@@ -5,6 +5,8 @@ public class Movie extends AMedia {
         super(name, releaseYear, category, rating);
     }
 
+
+
     @Override
     public String toString() {
         return "Name: " + name;

@@ -1,4 +1,5 @@
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -215,5 +216,28 @@ public class MainMenu {
         }
 
     }
+
+    public void makeUser(ArrayList<User> users) {
+        try {
+            File file = new File("UserNames.txt");
+            Scanner s = new Scanner(file);
+            while(s.hasNextLine()) {
+                String [] val = s.nextLine().trim().split(",");
+                String userName = val[0];
+                String password = val[1];
+
+                User u = new User(userName, password, new ArrayList<>(), new ArrayList<>(), new ArrayList<>(), new ArrayList<>());
+                users.add(u);
+            }
+
+        } catch (Exception e) {
+            System.out.println("Error her din idiot");
+
+
+        }
+
+
+    }
+
 }
 

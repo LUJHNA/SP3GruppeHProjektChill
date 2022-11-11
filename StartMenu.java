@@ -2,7 +2,6 @@
 
 import java.io.File;
 import java.io.FileWriter;
-import java.io.IOException;
 import java.io.Writer;
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -10,18 +9,18 @@ import java.util.Scanner;
 public class StartMenu {
 
     public static void main(String[] args) {
-
+        ArrayList<User> users = new ArrayList<>();
         ArrayList<Movie> movies = new ArrayList<>();
         ArrayList<Series> series = new ArrayList<>();
         MainMenu menu = new MainMenu();
+
         menu.createMovies(movies);
         menu.createSeries(series);
 
 
 
-
         loginAndRegister();
-        setupSearch(movies, series);
+        setupSearch(movies, series, users);
 
 
     }
@@ -96,9 +95,12 @@ public class StartMenu {
 
     }
 
-    public static void setupSearch(ArrayList<Movie> media, ArrayList<Series> media2) {
+    public static void setupSearch(ArrayList<Movie> media, ArrayList<Series> media2, ArrayList<User> users) {
         MainMenu mainMenu = new MainMenu();
         String x = mainMenu.seriesOrMovie();
+        mainMenu.makeUser(users);
+
+
 
         if (x.equals("movies")) {
 
@@ -112,12 +114,16 @@ public class StartMenu {
                 String x3 = mainMenu.yesOrNo();
                 if (x3.equals("yes")) {
                     System.out.println("Playing " + x2);
+                    users.get(0).seenMovies.add(x2);
+                    System.out.println("Added movie to seen movies");
+
+
 
                 }
 
                 if (x3.equals("no")) {
                     System.out.println("Search again");
-                    setupSearch(media, media2);
+                    setupSearch(media, media2, users);
                 }
 
             }
@@ -148,7 +154,7 @@ public class StartMenu {
 
                         if (x5.equals("no")) {
                             System.out.println("Search again");
-                            setupSearch(media, media2);
+                            setupSearch(media, media2, users);
 
                         }
 
@@ -188,7 +194,7 @@ public class StartMenu {
 
                 if (x3.equals("no")) {
                     System.out.println("Search again");
-                    setupSearch(media, media2);
+                    setupSearch(media, media2, users);
                 }
 
             }
@@ -202,7 +208,7 @@ public class StartMenu {
                 for (int i = 0; i < x4.size(); i++) {
                     if (y.equalsIgnoreCase(x4.get(i))) {
                         System.out.println("Play " + x4.get(i) + "? yes or no, enter answer");
-                        
+
                         String x5 = mainMenu.yesOrNo();
 
                         if (x5.equals("yes")) {
@@ -219,7 +225,7 @@ public class StartMenu {
 
                         if (x5.equals("no")) {
                             System.out.println("Search again");
-                            setupSearch(media, media2);
+                            setupSearch(media, media2, users);
 
                         }
 

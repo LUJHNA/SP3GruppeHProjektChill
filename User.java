@@ -6,13 +6,22 @@ public class User {
 
     public static String password;
 
-    ArrayList<AMedia> seenMovies = new ArrayList<>();
+    ArrayList<String> seenMovies = new ArrayList<>();
+    
+    ArrayList<String> seenSeries = new ArrayList<>();
+    
+    ArrayList<String> savedMovies = new ArrayList<>();
+    
+    ArrayList<String> savedSeries = new ArrayList<>();
 
-    public User(String userName, String password, ArrayList<AMedia>seenMovies) {
+    public User(String userName, String password, ArrayList<String>seenMovies, ArrayList<String> seenSeries, ArrayList<String> savedMovies, ArrayList<String> savedSeries ) {
 
         this.userName = userName;
         this.password = password;
         this.seenMovies= seenMovies;
+        this.seenSeries = seenSeries;
+        this.savedMovies = seenMovies;
+        this.savedSeries = savedSeries;
 
     }
 
@@ -32,18 +41,15 @@ public class User {
         this.password = password;
     }
 
-    public ArrayList<AMedia> getSeenMovies() {
+    public ArrayList<String> getSeenMovies() {
         return seenMovies;
     }
 
-    public void setSeenMovies(ArrayList<AMedia> seenMovies) {
+    public void setSeenMovies(ArrayList<String> seenMovies) {
         this.seenMovies = seenMovies;
     }
+    
+    
 
-    @Override
-    public String toString() {
-        return "User{" +
-                "userName='" + userName + '\''+
-                '}';
-    }
+
 }

@@ -20,7 +20,7 @@ public class User {
         this.password = password;
         this.seenMovies= seenMovies;
         this.seenSeries = seenSeries;
-        this.savedMovies = seenMovies;
+        this.savedMovies = savedMovies;
         this.savedSeries = savedSeries;
 
     }

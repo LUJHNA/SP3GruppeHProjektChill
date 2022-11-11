@@ -196,7 +196,7 @@ public class StartMenu {
 
                 String x2 = mainMenu.searchByNameSeries(media2);
                 System.out.println("Found " + x2);
-                System.out.println("Play: " + x2 + "? yes or no, enter answer");
+                System.out.println("Play: " + x2 + "? yes or no or save. enter answer");
                 String x3 = mainMenu.yesOrNo();
                 if (x3.equals("yes")) {
 
@@ -205,27 +205,25 @@ public class StartMenu {
                     Scanner scanner = new Scanner(System.in);
                     String s1 = scanner.nextLine();
 
-                    System.out.println("PLaying " + x2 + "and " + s1);
+                    System.out.println("Playing " + x2 + " and " + s1);
                     users.get(0).seenSeries.add(x2);
-                    System.out.println("Added " + x2 + "to seen series");
+                    System.out.println("Added " + x2 + " to seen series");
                     setupSearch(media, media2, users);
                 }
 
-                if (x3.equals("no")) {
+               else if (x3.equals("no")) {
                     System.out.println("Search again");
                     setupSearch(media, media2, users);
                 }
 
-                if (x3.equalsIgnoreCase("Save")) {
+               else if (x3.equalsIgnoreCase("Save")) {
                     System.out.println("Saved series");
                     users.get(0).savedSeries.add(x2);
                     setupSearch(media,media2,users);
 
                 }
 
-            }
-
-           else if (x1.equals("category")) {
+            } else if (x1.equals("category")) {
                 ArrayList<String> x4 = mainMenu.searchByCategorySeries(media2);
                 System.out.println("Found: " + x4 + "\n");
                 System.out.println("Enter chosen series");
@@ -251,13 +249,13 @@ public class StartMenu {
                         }
 
 
-                        if (x5.equals("no")) {
+                       else if (x5.equals("no")) {
                             System.out.println("Search again");
                             setupSearch(media, media2, users);
 
                         }
 
-                        if (x5.equalsIgnoreCase("Save")) {
+                        else if (x5.equalsIgnoreCase("Save")) {
                             System.out.println("Saved series");
                             users.get(0).savedSeries.add(x4.get(i));
                             setupSearch(media,media2,users);
@@ -272,6 +270,7 @@ public class StartMenu {
 
 
             }
+
 
         }
         else if (x.equalsIgnoreCase("seen movies")) {
@@ -293,6 +292,5 @@ public class StartMenu {
             System.out.println(users.get(0).savedSeries);
 
         }
-
     }
 }

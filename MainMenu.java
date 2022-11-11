@@ -47,7 +47,7 @@ public class MainMenu {
     public String seriesOrMovie() {
 
         Scanner s = new Scanner(System.in);
-        System.out.println("Choose to watch series or movies  or see seen or saved movies/series by entering which one");
+        System.out.println("Choose to watch series or movies or seen series/movies or saved movies/series by entering which one");
         String c = s.nextLine();
         if (c.equalsIgnoreCase("series")) {
             System.out.println("You chose series");
@@ -81,8 +81,7 @@ public class MainMenu {
 
         else {
             System.out.println("try again");
-            seriesOrMovie();
-            return "blabla";
+            return seriesOrMovie();
         }
 
     }

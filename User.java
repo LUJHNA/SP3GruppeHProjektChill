@@ -7,18 +7,18 @@ public class User {
     public static String password;
 
     ArrayList<String> seenMovies = new ArrayList<>();
-    
+
     ArrayList<String> seenSeries = new ArrayList<>();
-    
+
     ArrayList<String> savedMovies = new ArrayList<>();
-    
+
     ArrayList<String> savedSeries = new ArrayList<>();
 
-    public User(String userName, String password, ArrayList<String>seenMovies, ArrayList<String> seenSeries, ArrayList<String> savedMovies, ArrayList<String> savedSeries ) {
+    public User(String userName, String password, ArrayList<String> seenMovies, ArrayList<String> seenSeries, ArrayList<String> savedMovies, ArrayList<String> savedSeries) {
 
         this.userName = userName;
         this.password = password;
-        this.seenMovies= seenMovies;
+        this.seenMovies = seenMovies;
         this.seenSeries = seenSeries;
         this.savedMovies = savedMovies;
         this.savedSeries = savedSeries;
@@ -48,8 +48,6 @@ public class User {
     public void setSeenMovies(ArrayList<String> seenMovies) {
         this.seenMovies = seenMovies;
     }
-    
-    
 
 
 }

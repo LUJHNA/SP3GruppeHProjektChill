@@ -52,34 +52,23 @@ public class MainMenu {
         if (c.equalsIgnoreCase("series")) {
             System.out.println("You chose series");
             return "series";
-        }
-
-        else if (c.equalsIgnoreCase("movies")) {
+        } else if (c.equalsIgnoreCase("movies")) {
             System.out.println("You chose movies");
             return "movies";
 
-        }
-
-        else if (c.equalsIgnoreCase("Seen movies")) {
+        } else if (c.equalsIgnoreCase("Seen movies")) {
             System.out.println("you choose seen movies");
             return "seen movies";
-        }
-
-        else if (c.equalsIgnoreCase("Seen series")) {
+        } else if (c.equalsIgnoreCase("Seen series")) {
             System.out.println("you choose seen series");
             return "seen movies";
-        }
-
-         else if (c.equalsIgnoreCase("Saved movies")) {
+        } else if (c.equalsIgnoreCase("Saved movies")) {
             System.out.println("you choose saved movies");
             return "saved movies";
-        }
-       else if (c.equalsIgnoreCase("Saved series")) {
+        } else if (c.equalsIgnoreCase("Saved series")) {
             System.out.println("you choose Saved series");
             return "saved series";
-        }
-
-        else {
+        } else {
             System.out.println("try again");
             return seriesOrMovie();
         }
@@ -231,7 +220,7 @@ public class MainMenu {
                     listOfSeasons.add(season);
                 }
 
-                Series m = new Series (name, releaseYear, releaseTo, category, rating, listOfSeasons);
+                Series m = new Series(name, releaseYear, releaseTo, category, rating, listOfSeasons);
                 series.add(m);
             }
 
@@ -248,8 +237,8 @@ public class MainMenu {
         try {
             File file = new File("UserNames.txt");
             Scanner s = new Scanner(file);
-            while(s.hasNextLine()) {
-                String [] val = s.nextLine().trim().split(",");
+            while (s.hasNextLine()) {
+                String[] val = s.nextLine().trim().split(",");
                 String userName = val[0];
                 String password = val[1];
 

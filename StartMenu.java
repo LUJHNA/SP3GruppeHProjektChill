@@ -121,17 +121,13 @@ public class StartMenu {
                     setupSearch(media, media2, users);
 
 
-                }
-
-                else if (x3.equals("no")) {
+                } else if (x3.equals("no")) {
                     System.out.println("Search again");
                     setupSearch(media, media2, users);
-                }
-
-                else if (x3.equalsIgnoreCase("Save")) {
+                } else if (x3.equalsIgnoreCase("Save")) {
                     System.out.println("Saved movie");
                     users.get(0).savedMovies.add(x2);
-                    setupSearch(media,media2,users);
+                    setupSearch(media, media2, users);
 
                 }
 
@@ -172,22 +168,13 @@ public class StartMenu {
                         if (x5.equalsIgnoreCase("Save")) {
                             System.out.println("Saved movie");
                             users.get(0).savedMovies.add(x4.get(i));
-                            setupSearch(media,media2,users);
+                            setupSearch(media, media2, users);
 
                         }
-
-
                     }
-
-
                 }
-
-
             }
-
         }
-
-//TODO Fix this to fit series instead of movies.
 
         if (x.equals("series")) {
             String x1 = mainMenu.searchByNameOrCategory();
@@ -209,17 +196,13 @@ public class StartMenu {
                     users.get(0).seenSeries.add(x2);
                     System.out.println("Added " + x2 + " to seen series");
                     setupSearch(media, media2, users);
-                }
-
-               else if (x3.equals("no")) {
+                } else if (x3.equals("no")) {
                     System.out.println("Search again");
                     setupSearch(media, media2, users);
-                }
-
-               else if (x3.equalsIgnoreCase("Save")) {
+                } else if (x3.equalsIgnoreCase("Save")) {
                     System.out.println("Saved series");
                     users.get(0).savedSeries.add(x2);
-                    setupSearch(media,media2,users);
+                    setupSearch(media, media2, users);
 
                 }
 
@@ -246,19 +229,14 @@ public class StartMenu {
                             System.out.println("Added " + x4.get(i) + "to seen series");
                             users.get(0).seenSeries.add(x4.get(i));
                             setupSearch(media, media2, users);
-                        }
-
-
-                       else if (x5.equals("no")) {
+                        } else if (x5.equals("no")) {
                             System.out.println("Search again");
                             setupSearch(media, media2, users);
 
-                        }
-
-                        else if (x5.equalsIgnoreCase("Save")) {
+                        } else if (x5.equalsIgnoreCase("Save")) {
                             System.out.println("Saved series");
                             users.get(0).savedSeries.add(x4.get(i));
-                            setupSearch(media,media2,users);
+                            setupSearch(media, media2, users);
 
                         }
 
@@ -272,23 +250,16 @@ public class StartMenu {
             }
 
 
-        }
-        else if (x.equalsIgnoreCase("seen movies")) {
+        } else if (x.equalsIgnoreCase("seen movies")) {
             System.out.println(users.get(0).seenMovies);
 
-        }
-
-        else if (x.equalsIgnoreCase("saved movies")) {
+        } else if (x.equalsIgnoreCase("saved movies")) {
             System.out.println(users.get(0).savedMovies);
 
-        }
-
-        else if (x.equalsIgnoreCase("seen series")) {
+        } else if (x.equalsIgnoreCase("seen series")) {
             System.out.println(users.get(0).seenSeries);
 
-        }
-
-        else if (x.equalsIgnoreCase("saved series")) {
+        } else if (x.equalsIgnoreCase("saved series")) {
             System.out.println(users.get(0).savedSeries);
 
         }

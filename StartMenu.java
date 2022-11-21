@@ -3,6 +3,9 @@
 import java.io.File;
 import java.io.FileWriter;
 import java.io.Writer;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.SQLOutput;
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -23,14 +26,16 @@ public class StartMenu {
 
 
 
-        loginAndRegister(currentUser);
-        setupSearch(movies, series, currentUser);
+        loginAndRegister(movies, series, currentUser);
+
+
+
 
 
 
     }
 
-    public static void loginAndRegister(User currentUser) {
+    public static void loginAndRegister(ArrayList<Movie> movies, ArrayList<Series> series, User currentUser) {
         Scanner login = new Scanner(System.in);
 
         System.out.println("Enter Q for login or W to register.");
@@ -40,7 +45,7 @@ public class StartMenu {
 
         if ("Q".equalsIgnoreCase(m)) {
 
-
+            MediaDB mediaDB = new MediaDB();
             System.out.println("Enter User name");
             String userName2 = login.nextLine();
 
@@ -49,9 +54,9 @@ public class StartMenu {
 
             currentUser = new User(userName2, password2, new ArrayList<>(), new ArrayList<>(), new ArrayList<>(), new ArrayList<>());
 
+            mediaDB.loginMethod(movies, series, currentUser);
 
-
-            try {
+             /* try {
                 File file = new File("Usernames.txt");
                 Scanner reader = new Scanner(file);
 
@@ -73,7 +78,7 @@ public class StartMenu {
                 System.out.println("Error");
 
 
-            }
+            } */
 
 
         } else if ("W".equalsIgnoreCase(m)) {
@@ -83,24 +88,41 @@ public class StartMenu {
             System.out.println("Enter new password");
             String password = login.nextLine();
 
+            MediaDB mediaDB = new MediaDB();
+            mediaDB.establishConnection();
+
+            String query = "INSERT INTO usernames (username, password) VALUES (?,?)";
+            try {
+                PreparedStatement query2 = mediaDB.connection.prepareStatement(query);
+                query2.setString(1,userName);
+                query2.setString(2,password);
+                query2.execute();
+                loginAndRegister(movies, series, currentUser);
+
+            } catch (SQLException e) {
+                e.printStackTrace();
+
+            }
+
+           /*
             try {
                 Writer writer = new FileWriter("UserNames.txt");
                 writer.write(userName);
                 writer.write(",");
                 writer.write(password);
                 writer.close();
-                loginAndRegister(currentUser);
+                loginAndRegister(movies, series, currentUser);
 
 
             } catch (Exception e) {
                 System.out.println("Error");
 
             }
-
+        */
 
         } else {
             System.out.println("not valid input");
-            loginAndRegister(currentUser);
+            loginAndRegister(movies, series, currentUser);
 
         }
 

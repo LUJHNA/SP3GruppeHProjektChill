@@ -98,13 +98,53 @@ public class MediaDB {
 
     }
 
+    public void loginMethod(ArrayList<Movie> movies, ArrayList<Series> series, User currentUser) {
+
+        establishConnection();
+        StartMenu menu = new StartMenu();
+        String u = currentUser.getUserName();
+        String p = currentUser.getPassword();
+        String query = "SELECT * FROM usernames WHERE userName = ? AND password = ?";
+        try {
+            PreparedStatement query2 = connection.prepareStatement(query);
+            query2.setString(1,u);
+            query2.setString(2,p);
+            ResultSet resultSet = query2.executeQuery();
+
+           if (resultSet.next()) {
+               System.out.println("Login succesful");
+               menu.setupSearch(movies, series, currentUser);
+            }
+
+           else if (!resultSet.next()){
+               System.out.println("login not succeesful, restart the program");
+               connection.close();
+
+
+
+
+           }
+
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+
+        }
+
+
+    }
 
 
 
 
 
 
-    private void establishConnection() {
+
+
+
+
+
+    public void establishConnection() {
 
         try {
             connection = DriverManager.getConnection(url, userName, password);

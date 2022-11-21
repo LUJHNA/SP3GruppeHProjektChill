@@ -25,6 +25,9 @@ public class User {
 
     }
 
+    public User() {
+    }
+
     public String getUserName() {
         return userName;
     }
@@ -49,5 +52,10 @@ public class User {
         this.seenMovies = seenMovies;
     }
 
+    @Override
+    public String toString() {
+        return "name: " + userName;
 
+    }
 }
+

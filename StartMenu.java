@@ -10,22 +10,27 @@ import java.util.Scanner;
 public class StartMenu {
 
     public static void main(String[] args) {
-        ArrayList<User> users = new ArrayList<>();
+
         ArrayList<Movie> movies = new ArrayList<>();
         ArrayList<Series> series = new ArrayList<>();
-        MainMenu menu = new MainMenu();
 
-        menu.createMovies(movies);
-        menu.createSeries(series);
+        User currentUser = new User();
+
+        MediaDB dB = new MediaDB();
+
+        dB.createMovies2(movies);
+        dB.createSeries2(series);
 
 
-        loginAndRegister();
-        setupSearch(movies, series, users);
+
+        loginAndRegister(currentUser);
+        setupSearch(movies, series, currentUser);
+
 
 
     }
 
-    public static void loginAndRegister() {
+    public static void loginAndRegister(User currentUser) {
         Scanner login = new Scanner(System.in);
 
         System.out.println("Enter Q for login or W to register.");
@@ -42,6 +47,10 @@ public class StartMenu {
             System.out.println("Enter password");
             String password2 = login.nextLine();
 
+            currentUser = new User(userName2, password2, new ArrayList<>(), new ArrayList<>(), new ArrayList<>(), new ArrayList<>());
+
+
+
             try {
                 File file = new File("Usernames.txt");
                 Scanner reader = new Scanner(file);
@@ -53,7 +62,7 @@ public class StartMenu {
                         System.out.println("Login successful.");
                     } else {
                         System.out.println("Login not successful, check username and password");
-                        loginAndRegister();
+                        loginAndRegister(currentUser);
                     }
 
                 }
@@ -80,7 +89,7 @@ public class StartMenu {
                 writer.write(",");
                 writer.write(password);
                 writer.close();
-                loginAndRegister();
+                loginAndRegister(currentUser);
 
 
             } catch (Exception e) {
@@ -91,17 +100,17 @@ public class StartMenu {
 
         } else {
             System.out.println("not valid input");
-            loginAndRegister();
+            loginAndRegister(currentUser);
 
         }
 
 
     }
 
-    public static void setupSearch(ArrayList<Movie> media, ArrayList<Series> media2, ArrayList<User> users) {
+    public static void setupSearch(ArrayList<Movie> media, ArrayList<Series> media2, User currentUser) {
         MainMenu mainMenu = new MainMenu();
         String x = mainMenu.seriesOrMovie();
-        mainMenu.makeUser(users);
+
 
 
         if (x.equals("movies")) {
@@ -116,18 +125,18 @@ public class StartMenu {
                 String x3 = mainMenu.yesOrNo();
                 if (x3.equals("yes")) {
                     System.out.println("Playing " + x2);
-                    users.get(0).seenMovies.add(x2);
+                    currentUser.seenMovies.add(x2);
                     System.out.println("Added movie to seen movies");
-                    setupSearch(media, media2, users);
+                    setupSearch(media, media2, currentUser);
 
 
                 } else if (x3.equals("no")) {
                     System.out.println("Search again");
-                    setupSearch(media, media2, users);
+                    setupSearch(media, media2, currentUser);
                 } else if (x3.equalsIgnoreCase("Save")) {
                     System.out.println("Saved movie");
-                    users.get(0).savedMovies.add(x2);
-                    setupSearch(media, media2, users);
+                    currentUser.savedMovies.add(x2);
+                    setupSearch(media, media2, currentUser);
 
                 }
 
@@ -153,22 +162,22 @@ public class StartMenu {
 
                         if (x5.equals("yes")) {
                             System.out.println("Playing: " + x4.get(i));
-                            users.get(0).seenMovies.add(x4.get(i));
+                            currentUser.seenMovies.add(x4.get(i));
                             System.out.println("Added " + x4.get(i) + "to seen movies");
-                            setupSearch(media, media2, users);
+                            setupSearch(media, media2, currentUser);
                         }
 
 
                         if (x5.equals("no")) {
                             System.out.println("Search again");
-                            setupSearch(media, media2, users);
+                            setupSearch(media, media2, currentUser);
 
                         }
 
                         if (x5.equalsIgnoreCase("Save")) {
                             System.out.println("Saved movie");
-                            users.get(0).savedMovies.add(x4.get(i));
-                            setupSearch(media, media2, users);
+                            currentUser.savedMovies.add(x4.get(i));
+                            setupSearch(media, media2, currentUser);
 
                         }
                     }
@@ -193,16 +202,16 @@ public class StartMenu {
                     String s1 = scanner.nextLine();
 
                     System.out.println("Playing " + x2 + " and " + s1);
-                    users.get(0).seenSeries.add(x2);
+                    currentUser.seenSeries.add(x2);
                     System.out.println("Added " + x2 + " to seen series");
-                    setupSearch(media, media2, users);
+                    setupSearch(media, media2, currentUser);
                 } else if (x3.equals("no")) {
                     System.out.println("Search again");
-                    setupSearch(media, media2, users);
+                    setupSearch(media, media2, currentUser);
                 } else if (x3.equalsIgnoreCase("Save")) {
                     System.out.println("Saved series");
-                    users.get(0).savedSeries.add(x2);
-                    setupSearch(media, media2, users);
+                    currentUser.savedSeries.add(x2);
+                    setupSearch(media, media2, currentUser);
 
                 }
 
@@ -227,16 +236,16 @@ public class StartMenu {
 
                             System.out.println("PLaying " + x4.get(i) + "and " + s2);
                             System.out.println("Added " + x4.get(i) + "to seen series");
-                            users.get(0).seenSeries.add(x4.get(i));
-                            setupSearch(media, media2, users);
+                            currentUser.seenSeries.add(x4.get(i));
+                            setupSearch(media, media2, currentUser);
                         } else if (x5.equals("no")) {
                             System.out.println("Search again");
-                            setupSearch(media, media2, users);
+                            setupSearch(media, media2, currentUser);
 
                         } else if (x5.equalsIgnoreCase("Save")) {
                             System.out.println("Saved series");
-                            users.get(0).savedSeries.add(x4.get(i));
-                            setupSearch(media, media2, users);
+                            currentUser.savedSeries.add(x4.get(i));
+                            setupSearch(media, media2, currentUser);
 
                         }
 
@@ -251,16 +260,16 @@ public class StartMenu {
 
 
         } else if (x.equalsIgnoreCase("seen movies")) {
-            System.out.println(users.get(0).seenMovies);
+            System.out.println(currentUser.seenMovies);
 
         } else if (x.equalsIgnoreCase("saved movies")) {
-            System.out.println(users.get(0).savedMovies);
+            System.out.println(currentUser.savedMovies);
 
         } else if (x.equalsIgnoreCase("seen series")) {
-            System.out.println(users.get(0).seenSeries);
+            System.out.println(currentUser.seenSeries);
 
         } else if (x.equalsIgnoreCase("saved series")) {
-            System.out.println(users.get(0).savedSeries);
+            System.out.println(currentUser.savedSeries);
 
         }
     }

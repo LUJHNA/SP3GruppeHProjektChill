@@ -23,7 +23,7 @@ public class MainMenu {
         return null;
     }
 
-    // SearchByNameSeries her. ikke implementeret endnu.
+
 
     public String searchByNameSeries(ArrayList<Series> series) {
 
@@ -47,7 +47,7 @@ public class MainMenu {
     public String seriesOrMovie() {
 
         Scanner s = new Scanner(System.in);
-        System.out.println("Choose to watch series or movies or seen series/movies or saved movies/series by entering which one");
+        System.out.println("Choose to watch series or movies or seen series/movies or saved movies/series or Quit by entering which one");
         String c = s.nextLine();
         if (c.equalsIgnoreCase("series")) {
             System.out.println("You chose series");
@@ -68,6 +68,8 @@ public class MainMenu {
         } else if (c.equalsIgnoreCase("Saved series")) {
             System.out.println("you choose Saved series");
             return "saved series";
+        } else if (c.equalsIgnoreCase("quit")) {
+           return "quit";
         } else {
             System.out.println("try again");
             return seriesOrMovie();

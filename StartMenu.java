@@ -56,29 +56,6 @@ public class StartMenu {
 
             mediaDB.loginMethod(movies, series, currentUser);
 
-             /* try {
-                File file = new File("Usernames.txt");
-                Scanner reader = new Scanner(file);
-
-                while (reader.hasNextLine()) {
-                    String d = reader.nextLine();
-                    String[] s = d.split(",");
-                    if (s[0].equals(userName2) && s[1].equals(password2)) {
-                        System.out.println("Login successful.");
-                    } else {
-                        System.out.println("Login not successful, check username and password");
-                        loginAndRegister(currentUser);
-                    }
-
-                }
-                reader.close();
-
-
-            } catch (Exception e) {
-                System.out.println("Error");
-
-
-            } */
 
 
         } else if ("W".equalsIgnoreCase(m)) {
@@ -103,22 +80,6 @@ public class StartMenu {
                 e.printStackTrace();
 
             }
-
-           /*
-            try {
-                Writer writer = new FileWriter("UserNames.txt");
-                writer.write(userName);
-                writer.write(",");
-                writer.write(password);
-                writer.close();
-                loginAndRegister(movies, series, currentUser);
-
-
-            } catch (Exception e) {
-                System.out.println("Error");
-
-            }
-        */
 
         } else {
             System.out.println("not valid input");
@@ -283,15 +244,21 @@ public class StartMenu {
 
         } else if (x.equalsIgnoreCase("seen movies")) {
             System.out.println(currentUser.seenMovies);
+            setupSearch(media, media2, currentUser);
 
         } else if (x.equalsIgnoreCase("saved movies")) {
             System.out.println(currentUser.savedMovies);
+            setupSearch(media, media2, currentUser);
 
         } else if (x.equalsIgnoreCase("seen series")) {
             System.out.println(currentUser.seenSeries);
+            setupSearch(media, media2, currentUser);
 
         } else if (x.equalsIgnoreCase("saved series")) {
             System.out.println(currentUser.savedSeries);
+            setupSearch(media, media2, currentUser);
+            
+        } else if (x.equalsIgnoreCase("quit")) {
 
         }
     }
